@@ -45,7 +45,7 @@ async function getGitHubEvents(userName) {
         ).slice(0, 10);
 
         if (filteredEvents.length === 0) {
-            list.innerHTML = "<li>No recent CreateEvent or PushEvent found.</li>";
+            list.innerHTML = "<li>Nenhum createEvent recente ou pushEvent encontrado.</li>";
             return;
         }
 
@@ -80,6 +80,8 @@ async function getGitHubEvents(userName) {
 async function getUserData(userName) {
     const userResponse = await getUser(userName)
     const repositoriesResponse = await getRepositories(userName)
+    console.log(repositoriesResponse);
+    
     if(userResponse.message === "Not Found"){ 
         screen.renderNotFound()
         return
